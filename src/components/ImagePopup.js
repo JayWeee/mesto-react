@@ -1,8 +1,8 @@
 function ImagePopup(props) {
   return (
     <div
-      className={`popup popup_type_image popup_opacity ${
-        props.isOpen ? 'popup_opened' : ''
+      className={`popup popup_opacity ${
+        props.card.state ? 'popup_opened' : ''
       }`}
     >
       <div className="popup__image-container">
@@ -12,11 +12,11 @@ function ImagePopup(props) {
           type="button"
         />
         <img
-          src={props.card.link}
-          alt="Картинка карточки"
+          src={props.card.card.link}
+          alt={props.card.card.name}
           className="popup__photo"
         />
-        <p className="popup__caption">{props.card.name}</p>
+        <p className="popup__caption">{props.card.card.name}</p>
       </div>
     </div>
   );

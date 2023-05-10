@@ -9,8 +9,8 @@ function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
-  const [isImagePopupOpen, setIsImagePopupOpen] = useState(false);
-  const [selectedCard, setSelectedCard] = useState({});
+  // const [isImagePopupOpen, setIsImagePopupOpen] = useState(false);
+  const [selectedCard, setSelectedCard] = useState({state: false, card: {}});
 
   function handleEditProfileClick() {
     setIsEditProfilePopupOpen(true);
@@ -25,15 +25,16 @@ function App() {
   }
 
   function handleCardClick(card) {
-    setIsImagePopupOpen(true);
-    setSelectedCard(card);
+    // setIsImagePopupOpen(true);
+    setSelectedCard({state: true, card: card});
   }
 
   function closeAllPopups() {
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
     setIsEditAvatarPopupOpen(false);
-    setIsImagePopupOpen(false);
+    setSelectedCard({state: false, card: selectedCard.card});
+    // setIsImagePopupOpen(false);
   }
 
   return (
@@ -53,6 +54,7 @@ function App() {
         onClose={closeAllPopups}
         name="edit-avatar"
         title="Обновить аватар"
+        buttonText='Сохранить'
       >
         <>
           <input
@@ -73,6 +75,7 @@ function App() {
         onClose={closeAllPopups}
         name="edit"
         title="Редактировать профиль"
+        buttonText='Сохранить'
       >
         <>
           <input
@@ -104,6 +107,7 @@ function App() {
         onClose={closeAllPopups}
         name="card"
         title="Новое место"
+        buttonText='Создать'
       >
         <>
           <input
@@ -133,7 +137,7 @@ function App() {
       <PopupWithForm name="confirm-delite" title="Вы уверены?" />
 
       <ImagePopup
-        isOpen={isImagePopupOpen}
+        // isOpen={isImagePopupOpen}
         card={selectedCard}
         onClose={closeAllPopups}
       />

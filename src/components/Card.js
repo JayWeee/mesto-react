@@ -8,7 +8,7 @@ function Card(props) {
       <img
         onClick={handleClick}
         src={props.card.link}
-        alt="Карточка страницы"
+        alt={props.card.name}
         className="card__image"
       />
       <button className="card__btn card__btn_action_remove" />

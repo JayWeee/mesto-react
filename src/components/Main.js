@@ -13,11 +13,10 @@ function Main(props) {
       setUserName(res.name);
       setUserDescription(res.about);
       setUserAvatar(res.avatar);
-    });
-  }, []);
-
-  useEffect(() => {
-    api.getInitialCards().then((res) => setCards(res));
+    }).catch(err => console.log(err))
+    api.getInitialCards()
+      .then((res) => setCards(res))
+      .catch(err => console.log(err))
   }, []);
 
   return (
